@@ -1,32 +1,64 @@
 var serialport = require('serialport');
 var SerialPort = serialport.SerialPort;
 
-var connection = new SerialPort('/dev/ttyUSB0',{
+//puerto serial de dispositivo gsm 1
+var gsm = new SerialPort('/dev/ttyUSB0',{
     baudrate: 9600,
-    //parser: serialport.parsers.readline('\n')
+    parser: serialport.parsers.readline('\n')
 },false);
 
-connection.open(function(error){
+//puerto serial del tragamonedas
+var coin = new SerialPort('/dev/ttyUSB1',{
+    baudrate: 9600,
+},false);
+
+//apertura del puerto serial del dispositivo gsm 1
+gsm.open(function(error){
   if(error){
-    console.log("no se pudo abrir el puerto");
+    console.log("no se pudo abrir el puerto del dispositivo gsm1");
   }else{
-    console.log("puerto serial abierto");
-    connection.on("data",function(data){
-      var datos = data;
-      console.log("monto: " + datos + '\n');
+    console.log("gsm ok");
+    gsm.on("data",function(data){
+      console.log(data + '\n');
     });
-    connection.write("AT\r\n");
+    gsm.write("AT\r\n");
+  }
+});
+
+//apertura del puerto serial del tragamonedas
+coin.open(function(error){
+  if(error){
+    console.log("no se pudo abrir el puerto del tragamonedas");
+  }else{
+    console.log("tragamonedas ok");
+    coin.on("data",function(data){
+      var char = "" + data;
+      switch(char.charCodeAt()){
+        case 97:
+              console.log("monto ingresado: " + 0.20);
+              break
+        case 98:
+              console.log("monto ingresado: " + 0.50);
+              break
+        case 99:
+              console.log("monto ingresado: " + 5);
+              break
+        default :
+              console.log("dato no procesado");
+              break
+      }
+    });
   }
 });
 
 var llamar = function(numero){
   var cmd = "ATD" + numero + ";\r\n";
-  connection.write(cmd);
+  gsm.write(cmd);
 };
 
 var colgar = function(){
   var cmd = "ATH\r\n";
-  connection.write(cmd);
+  gsm.write(cmd);
 };
 
 module.exports.llamar = llamar;
