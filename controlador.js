@@ -31,4 +31,8 @@ app.get("/",function(req,res){
   res.render("call.html");
 });
 
+app.get("/recargas",function(req,res){
+  res.render("recargas.html");
+});
+
 app.listen(8080);
