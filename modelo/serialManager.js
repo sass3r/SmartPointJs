@@ -36,16 +36,25 @@ coin.open(function(error){
       switch(char.charCodeAt()){
         case 97:
               console.log("monto ingresado: " + 0.20);
-              break
+              break;
         case 98:
               console.log("monto ingresado: " + 0.50);
-              break
+              break;
         case 99:
               console.log("monto ingresado: " + 5);
-              break
+              break;
+        case 65:
+              console.log("monto ingresado: " + 1);
+              break;
+        case 66:
+              console.log("monto ingresado: " + 2);
+              break;
+        case 67:
+              console.log("monto ingresado: " + 0.10);
+              break;
         default :
               console.log("dato no procesado");
-              break
+              break;
       }
     });
   }
