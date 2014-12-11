@@ -20,6 +20,10 @@ socketio.sockets.on('connection', function(socket){
     socketio.sockets.emit('monto',monto);
   });
 
+  socket.on('recargaEntel',function(numero,monto){
+    serialManager.recargaEntel(numero,monto);
+  });
+
 
 
 });
