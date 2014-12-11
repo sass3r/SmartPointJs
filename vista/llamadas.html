@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>PuntoSmart</title>
+<link rel="stylesheet" href="/stylesheet/style.css" type="text/css" />
+
+</head>
+<body>
+<br>
+
+<input id="intext" onclick="eliminar()" aautofocus="" type="button"><br><br>
+<div onclick="marcar('intext', 1)">1</div>
+<div onclick="marcar('intext', 2)">2</div>
+<div onclick="marcar('intext', 3)">3</div>
+
+<br>
+
+<div onclick="marcar('intext', 4)">4</div>
+<div onclick="marcar('intext', 5)">5</div>
+<div onclick="marcar('intext', 6)">6</div>
+
+<br>
+<div onclick="marcar('intext', 7)">7</div>
+<div onclick="marcar('intext', 8)">8</div>
+<div onclick="marcar('intext', 9)">9</div>
+
+<br>
+<div onclick="eliminar()"><<</div>
+<div onclick="marcar('intext', 0)">0</div>
+<div onclick="cls()">CLS</div>
+
+<br><br>
+<div id="call" class="baraz" onclick="call()">Llamar</div>
+
+<script src="http://localhost:8081/socket.io/socket.io.js"></script>
+<script src="/script/llamadascript.js"></script>
+
+</body>
+</html>
