@@ -83,5 +83,15 @@ var colgar = function(){
   gsm.write(cmd);
 };
 
+var recargaEntel = function(numero,monto){
+    var cmd = "AT+CUSD=1,\"*133*"+numero+"*"+monto+"#\"\r\n";
+    var confirmar = "AT+CUSD=1,\"1\"\r\n";
+    gsm.write(cmd);
+    setTimeout(function(){
+      gsm.write(confirmar);
+    },5000);
+};
+
 module.exports.llamar = llamar;
 module.exports.colgar = colgar;
+module.exports.recargaEntel = recargaEntel;
