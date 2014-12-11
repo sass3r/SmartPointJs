@@ -15,6 +15,11 @@ socketio.sockets.on('connection', function(socket){
     serialManager.colgar();
   });
 
+  socket.on('monto',function(monto){
+    console.log("desde servidor: " + monto);
+    socketio.sockets.emit('monto',monto);
+  });
+
 
 
 });
@@ -27,8 +32,8 @@ nunjucks.configure(__dirname + "/vista",{
 app.use(express.static(__dirname + "/vista"));
 
 
-app.get("/",function(req,res){
-  res.render("call.html");
+app.get("/llamadas",function(req,res){
+  res.render("llamadas.html");
 });
 
 app.get("/recargas",function(req,res){
