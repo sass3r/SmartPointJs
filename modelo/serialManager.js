@@ -1,4 +1,5 @@
 var serialport = require('serialport');
+var socketio = require('socket.io-client')('http://localhost:8081');
 var SerialPort = serialport.SerialPort;
 
 //puerto serial de dispositivo gsm 1
@@ -36,21 +37,33 @@ coin.open(function(error){
       switch(char.charCodeAt()){
         case 97:
               console.log("monto ingresado: " + 0.20);
+              var value = 0.20;
+              socketio.emit('monto',value);
               break;
         case 98:
               console.log("monto ingresado: " + 0.50);
+              var value = 0.50;
+              socketio.emit('monto',value);
               break;
         case 99:
               console.log("monto ingresado: " + 5);
+              var value = 5;
+              socketio.emit('monto',value);
               break;
         case 65:
               console.log("monto ingresado: " + 1);
+              var value = 1;
+              socketio.emit('monto',value);
               break;
         case 66:
               console.log("monto ingresado: " + 2);
+              var value = 2;
+              socketio.emit('monto',value);
               break;
         case 67:
               console.log("monto ingresado: " + 0.10);
+              var value = 0.10;
+              socketio.emit('monto',value);
               break;
         default :
               console.log("dato no procesado");
