@@ -1,0 +1,10 @@
+2bs 71764052
+1bs 67561921
+
++CUSD: 0,"Se transfirio Bs. .5 a la linea 71764052. Su saldo actual para transferencias es de Bs. 28.50.",64
+AT+CUSD=1,*133*71764052*
+
++CUSD: 0,"Se transfirio Bs. .5 a la linea 71764052. Su saldo actual para transferencias es de Bs. 28.00.",64
+
+
++CUSD: 0,"Se transfirio Bs. 1 a la linea 67561921. Su saldo actual para transferencias es de Bs. 27.00.",64
