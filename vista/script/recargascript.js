@@ -39,6 +39,11 @@ function eliminar(){
 
 }
 
+function recarga(){
+  var numero = getTextValue();
+  socket.emit('recargaEntel',numero,mount);
+}
+
 var cls = function(){
   setTextValue("");
 };
